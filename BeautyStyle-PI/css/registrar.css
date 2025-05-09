@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    list-style: none !important;
+    
+}
+
+
+.btn-gradient{
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(#fe9611, #ff5c00);
+    border-radius: 6px;
+}
+
+.logo{
+    margin-top: 15px;
+}
+.logo a{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+}
+
+.background-verde {
+    background-color: #114440;
+    width: 800px;        /* Largura do quadrado */
+    height: 700px;       /* Altura do quadrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo dentro do quadrado */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px; /* Opcional: cantos levemente arredondados */
+}
+
+.titulo {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.titulo h1 {
+    font-size: 40px;
+}
+
+.dados {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-right:30px ;
+}
+.senha{
+    padding-left:35px ;
+}
+
+.botao{
+    padding-top: 15px;
+}
+
+.dados div {
+    margin: 10px 0; /* espaçamento entre Email e Senha */
+}
+
+.dados input {
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+}
+
+.registrar{
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+}
+.registrar a{
+    color: #fe9611;
+}

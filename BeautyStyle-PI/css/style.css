@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*fim das importacoes*/
+
+
+/*Inicio das configuracoes gerais*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box ;
+    text-decoration: none !important;
+    list-style: none !important;
+}
+
+body {
+    font-family: "Open Sans", serif;
+}
+
+:root {
+    --verde-escuro: #114440;
+    --orange: #ff7c37;
+    --degrade: linear-gradient(#fe9611, #ff5c00);
+    --branco: #FFFFFF;
+}
+/*Fim das configuracoes gerais*/
+
+/*Classes reaulitizaveis*/
+.container{
+    max-width: 1440px;
+    padding: 0 5%;
+    margin: 0 auto;
+}
+.btn-gradient{
+    padding: 10px 20px;
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+    background-image: var(--degrade);
+    border-radius: 6px;
+}
+/*fim das Classes reaulitizaveis*/
+
+
+/*-------------------------------------------------------Inicio do cabecalho----------------------------------------------------------------------------------*/
+.background-verde{
+    background-color: var(--verde-escuro);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.logo a{
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--branco);
+}
+.ul{
+    display: flex;
+    align-items: center;
+}
+.ul li{
+    margin: 0 35px;
+    font-size: 15px;
+}
+.ul li a{
+    color: var(--branco);
+}
+.ulSepara{
+    display: flex;
+    align-items: center;
+}
+.ulSepara li{
+    margin: 0 5px;
+}
+.barra{
+    color: white;
+}
+/*-------------------------------------------------------fim do cabecalho----------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------Inicio main----------------------------------------------------------------------------------*/
+main .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.main-text{
+    width: 50%;
+    color: var(--branco);
+}
+.main-text h1{
+    font-size: 3.5rem;
+}
+.main-text div{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.Icon-agenda{
+    scale: 60%;
+}
+.main-img{
+    width: 50%;
+}
+.main-img img{
+    width: 100%;
+}
+/*Menu icon*/
+.menu-icon{
+    display: none;
+    scale: 60%;
+    position: relative;
+    z-index: 10;
+}
+/*-------------------------------------------------------Fim main-------------------------------------------------------------------------------------*/
+
+.um{
+    max-width: 400px;
+    height: 400px;
+}
+.dois{
+    max-width: 400px;
+    height: 400px;
+}
+.trez{
+    max-width: 400px;
+    height: 400px;
+}
+
+.org{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15%;
+}
+.div-carosel{
+    max-width: 1440px;
+    padding: 0 5%;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+/* Ajuste para evitar o zoom nas imagens */
+
+.hidden {
+    display: none !important;
+}
+
+.feedback-container {
+    background-color: #114440; /* Fundo atualizado */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+    color: white;
+}
+
+.feedback-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Área de envio de feedback */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.feedback-field label {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 8px;
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.feedback-field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 16px;
+    color: #333;
+    min-height: 150px;
+    outline: none;
+}
+
+.feedback-field textarea:focus {
+    border-color: #fe9611;
+    box-shadow: 0 0 5px rgba(255, 92, 0, 0.5);
+}
+
+.btn-gradient {
+    background-image: linear-gradient(#fe9611, #ff5c00);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.btn-gradient:hover {
+    background-color: #ff5c00;
+}
+
+/* Feedbacks já enviados */
+.feedback-list {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    overflow-y: auto;
+    max-height: 400px; /* Adiciona rolagem quando houver muitos feedbacks */
+}
+
+.feedback-item {
+    background-color: #1b5c54;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    color: white;
+}
+
+.feedback-item p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.feedback-item .feedback-author {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff5c00;
+}
+
+.feedback-item .feedback-date {
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Estilo de administrador para revisar feedbacks */
+.admin-feedback-container {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.admin-feedback-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.admin-feedback-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-feedback-container th, .admin-feedback-container td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-feedback-container th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.admin-feedback-container td {
+    color: #666;
+}
+
+.admin-feedback-container button {
+    background-color: #114440;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-feedback-container button:hover {
+    background-color: #fe9611;
+}
+
+.admin-feedback-container p {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.admin-feedback-container .actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/*-------------------------------------------------------Inicio da responsividade-------------------------------------------------------------------------*/
+@media (max-width: 1190px){
+    main .container{
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 1050px){
+    main .container{
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 1050px){
+    .org{
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 960px){
+    .menu-icon{
+        display: block;
+    }
+
+
+    .ul{
+        position: fixed;
+        background-color: var(--verde-escuro);
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 100%;
+        transition: 0.3s;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .ul li{
+        font-size: 20px;
+        margin: 15px 0;
+    }
+    .ul.ativo{
+        left: 0;
+        
+    }
+    main .container{
+        flex-direction: column;
+        padding-bottom: 5px;
+    }
+    main .container .main-img{
+        width: 100%;
+    }
+    main .container .main-text{
+        width: 100%;
+        text-align: center;
+    }
+    main .container .main-text h1{
+        font-size: 2.5rem;
+    }
+    main .container .main-text div{
+        justify-content: center;
+    }
+
+    /*Carrosel responsivo*/
+    .org{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .dois{
+        margin-top: 150px;
+    }
+    .trez{
+        margin-top: 150px;
+    }
+
+    @media (max-width: 600px){
+        .org{
+            scale: 80%;
+            margin-top: -100px;
+        }
+    }
+    @media (max-width: 445px){
+        .org{
+            scale: 60%;
+            margin-top: -200px;
+        }
+    }
+
+}
