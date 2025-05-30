@@ -33,14 +33,16 @@
                     <button type="submit">Editar</button>
                 </form>
             </td>
-            <td>
-                <form th:action="@{/logout}" method="post">
-                    <button type="submit">Sair</button>
-                </form>
-            </td>
         </tr>
     </table>
-
+    <br>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Sair</button>
+       </form>
+               <form th:action="@{/agendar}" method="get">
+            <button type="submit">Agendar</button>
+       </form>
+    <br>
     <p th:text="${mensagem}"></p>
 </body>
 </html>

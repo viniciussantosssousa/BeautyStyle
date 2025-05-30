@@ -39,7 +39,7 @@ public class PaginaAgendamentoController {
             model.addAttribute("mensagem", "Erro: " + e.getMessage());
         }
 
-        return "agendamento";
+        return "lista-agendamentos";
     }
 
     @GetMapping("/agendamentos")

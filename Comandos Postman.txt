@@ -1,0 +1,44 @@
+Comandos Postman projeto BeautyStyle
+
+URL padrão: https://supreme-broccoli-v6gvqv96jgg2p9pv-8080.app.github.dev/
+
+Cadastrar Usuário: POST
+api/usuarios/cadastro
+{
+  "nome": "Maria",
+  "email": "maria@gmail.com",
+  "telefone": "11988887777",
+  "senha": "123456",
+  "tipo": "CLIENTE"
+}
+
+Criar Serviço: POST
+api/servicos
+{
+  "nome": "Corte Feminino",
+  "descricao": "Corte com tesoura ou navalha",
+  "preco": 50,
+  "duracaoMinutos": 30
+}
+
+Realizar Login: POST
+api/usuarios/login
+{
+  "email": "maria@gmail.com",
+  "senha": "123456"
+}
+
+Criar Agendamento: POST
+api/agendamentos
+{
+  "nomeCliente": "Ana Souza",
+  "servico": "Corte e escova",
+  "dataHora": "2025-05-29T14:30:00",
+  "telefone": "11999999999"
+}
+
+Listar Agendamentos: GET
+api/agendamentos
+
+Cancelar Agendamento: DELETE
+api/agendamentos/1

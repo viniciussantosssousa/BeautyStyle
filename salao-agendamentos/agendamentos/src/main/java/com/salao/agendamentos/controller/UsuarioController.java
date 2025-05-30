@@ -9,9 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 
 
-@RestController
+@Controller
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
@@ -29,11 +30,12 @@ public class UsuarioController {
 
         try {
             usuarioService.cadastrar(dto);
-            return "redirect:/login";
+            return "redirect:/agendamentos";
         } catch (RuntimeException e) {
             model.addAttribute("erro", e.getMessage());
             return "cadastro";
         }
+        
     }
 
     @PostMapping("/login")

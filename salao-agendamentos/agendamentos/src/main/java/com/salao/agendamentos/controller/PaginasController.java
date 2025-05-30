@@ -10,4 +10,10 @@ public class PaginasController {
     public String mostrarCadastro() {
         return "cadastro";
     }
+
+    @GetMapping("/login")
+    public String exibirPaginaLogin() {
+        return "login"; 
+    }
+
 }
