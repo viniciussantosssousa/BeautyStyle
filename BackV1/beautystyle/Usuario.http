@@ -1,0 +1,36 @@
+# Definição de variáveis (ambiente “local” do REST Client)
+@base_url = https://supreme-broccoli-v6gvqv96jgg2p9pv-8080.app.github.dev
+
+### Inserir novo usuario
+POST {{ base_url }}/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Lucas",
+  "email": "lucas@gmail.com",
+  "telefone": "34998305910",
+  "senha": "123465"
+}
+
+### Listar todos os usuarios
+GET {{ base_url }}/api/usuarios
+Accept: application/json
+
+### Buscar usuarios por ID
+GET {{ base_url }}/api/usuarios/1
+Accept: application/json
+
+### Atualizar usuario (PUT)
+PUT {{ base_url }}/api/usuarios/1
+Content-Type: application/json
+
+{
+  "nome": "Supra mk4",
+  "email": "lucas@gmail.com",
+  "telefone": "34998305910",
+  "senha": "123465"
+}
+
+### Remover usuario (DELETE)
+DELETE {{ base_url }}/api/usuarios/1
+Accept: */*
