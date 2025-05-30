@@ -19,8 +19,8 @@ public class UsuarioDetailsService implements UserDetailsService {
 
         return User.builder()
                 .username(usuario.getEmail())
-                .password(usuario.getSenha()) // ainda sem criptografia
-                .roles(usuario.getTipo())     // tipo pode ser "ADMIN", "ATENDENTE"
+                .password(usuario.getSenha())
+                .roles(usuario.getTipo())
                 .build();
     }
 }

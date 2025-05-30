@@ -21,6 +21,10 @@
 
         <button type="submit">Agendar</button>
     </form>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sair</button>
+    </form>
+
 
     <p th:text="${mensagem}"></p>
 </body>

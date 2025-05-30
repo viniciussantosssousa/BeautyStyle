@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -19,6 +21,19 @@ public class UsuarioController {
     @PostMapping("/cadastro")
     public Usuario cadastrar(@RequestBody UsuarioDTO dto) {
         return usuarioService.cadastrar(dto);
+    }
+
+    @PostMapping("/cadastro-form")
+    public String cadastrarViaFormulario(@ModelAttribute UsuarioDTO dto, Model model) {
+        dto.setTipo("CLIENTE");
+
+        try {
+            usuarioService.cadastrar(dto);
+            return "redirect:/login";
+        } catch (RuntimeException e) {
+            model.addAttribute("erro", e.getMessage());
+            return "cadastro";
+        }
     }
 
     @PostMapping("/login")

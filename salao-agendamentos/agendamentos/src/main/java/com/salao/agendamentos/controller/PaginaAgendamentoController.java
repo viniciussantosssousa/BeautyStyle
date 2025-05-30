@@ -16,7 +16,7 @@ public class PaginaAgendamentoController {
 
     @GetMapping("/agendar")
     public String exibirFormulario() {
-        return "agendamento"; // templates/agendamento.html
+        return "agendamento";
     }
 
     @PostMapping("/agendar")

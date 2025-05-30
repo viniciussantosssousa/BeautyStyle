@@ -39,9 +39,10 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //usando para teste
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance(); // ⚠️ apenas para testes
+        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean

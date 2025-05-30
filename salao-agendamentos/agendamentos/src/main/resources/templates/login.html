@@ -9,7 +9,7 @@
     
     <form th:action="@{/login}" method="post">
         <div>
-            <label for="username">E-mail:</label>
+            <label for="username">Email:</label>
             <input type="text" name="username" id="username" required />
         </div>
         <div>
@@ -20,10 +20,10 @@
             <button type="submit">Entrar</button>
         </div>
         <div th:if="${param.error}">
-            <p style="color:red;">Usuário ou senha inválidos.</p>
+            <p style="color:red;">Email ou senha inválidos.</p>
         </div>
         <div th:if="${param.logout}">
-            <p style="color:green;">Logout realizado com sucesso.</p>
+            <p style="color:green;">Você saiu com sucesso.</p>
         </div>
     </form>
 </body>

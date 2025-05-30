@@ -24,5 +24,5 @@ public class Usuario {
 
     private String senha;
 
-    private String tipo; // "CLIENTE" ou "ADMIN"
+    private String tipo;
 }

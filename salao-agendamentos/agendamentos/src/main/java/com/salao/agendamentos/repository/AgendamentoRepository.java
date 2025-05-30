@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
-    Optional<Agendamento> findByDataHora(LocalDateTime dataHora); // evitar conflitos
+    Optional<Agendamento> findByDataHora(LocalDateTime dataHora);
 }

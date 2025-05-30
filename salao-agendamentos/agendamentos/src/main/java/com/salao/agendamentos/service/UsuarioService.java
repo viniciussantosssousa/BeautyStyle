@@ -15,17 +15,25 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario cadastrar(UsuarioDTO dto) {
+        if (usuarioRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new RuntimeException("Email já está em uso");
+        }
+
+        if (usuarioRepository.findByTelefone(dto.getTelefone()).isPresent()) {
+            throw new RuntimeException("Telefone já está em uso");
+        }
+
         Usuario usuario = Usuario.builder()
                 .nome(dto.getNome())
                 .email(dto.getEmail())
                 .telefone(dto.getTelefone())
-                .senha(dto.getSenha()) // depois vamos criptografar
+                .senha(dto.getSenha())
                 .tipo(dto.getTipo())
                 .build();
+
         return usuarioRepository.save(usuario);
     }
 
-    // ✅ Adicione este método abaixo:
     public boolean validarLogin(String email, String senha) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
         return usuarioOpt.isPresent() && usuarioOpt.get().getSenha().equals(senha);
