@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -26,7 +27,7 @@ public class UsuarioController {
 
     @PostMapping("/cadastro-form")
     public String cadastrarViaFormulario(@ModelAttribute UsuarioDTO dto, Model model) {
-        dto.setTipo("CLIENTE");
+        dto.setTipo("ADMIN");
 
         try {
             usuarioService.cadastrar(dto);
@@ -48,4 +49,17 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha inválidos");
         }
     }
+
+    @GetMapping("/gerenciar")
+    public String listarUsuarios(Model model) {
+        model.addAttribute("usuarios", usuarioService.listarTodos());
+        return "usuarios";
+    }
+
+    @PostMapping("/excluir/{id}")
+    public String excluirUsuario(@PathVariable Long id) {
+        usuarioService.excluirPorId(id);
+        return "redirect:/api/usuarios/gerenciar";
+    }
+
 }
