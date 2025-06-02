@@ -35,13 +35,17 @@
             </td>
         </tr>
     </table>
+    
+    <br>
+        <form th:action="@{/agendar}" method="get">
+            <button type="submit">Agendar</button>
+       </form>
+
     <br>
         <form th:action="@{/logout}" method="post">
             <button type="submit">Sair</button>
-       </form>
-               <form th:action="@{/agendar}" method="get">
-            <button type="submit">Agendar</button>
-       </form>
+        </form>
+
     <br>
     <p th:text="${mensagem}"></p>
 </body>
