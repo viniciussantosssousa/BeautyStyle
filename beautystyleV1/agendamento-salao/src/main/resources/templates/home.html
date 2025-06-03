@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Salão de Cabelo</title>
+    <link rel="stylesheet" href="/css/style.css"> </head>
+<body>
+    <h1>Bem-vindo(a) ao Salão de Cabelo!</h1>
+    <p>Este é o seu portal para agendamentos e feedbacks.</p>
+    <p>
+        <a th:href="@{/login}">Fazer Login</a> |
+        <a th:href="@{/register}">Registrar-se</a>
+    </p>
+    <hr/>
+    <p>Conteúdo da Home Page (acessível a todos).</p>
+</body>
+</html>
