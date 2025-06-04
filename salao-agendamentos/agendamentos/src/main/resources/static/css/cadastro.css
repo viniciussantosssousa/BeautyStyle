@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    list-style: none !important;
+}
+
+.btn-gradient {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(#fe9611, #ff5c00);
+    border-radius: 6px;
+}
+
+.logo {
+    margin-top: 15px;
+}
+
+.logo a {
+    font-family: Serifada;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fe9611;
+}
+
+.background-verde {
+    background-color: #114440;
+    width: 800px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.titulo {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.titulo h1 {
+    font-size: 35px;
+}
+
+.dados {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-right: 30px;
+}
+
+.senha {
+    padding-left: 35px;
+}
+
+.senha input[type="password"]::-ms-reveal,
+.senha input[type="password"]::-ms-clear,
+.senha input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none;
+}
+
+.botao {
+    padding-top: 15px;
+}
+
+.dados div {
+    margin: 10px 0;
+}
+
+.dados input {
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+}
+
+.registrar {
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+.registrar a {
+    color: #fe9611;
+}
+
+.voltar-home {
+    padding-top: 10px;
+    color: white;
+}
+
+.voltar-home a.btn-home {
+    background: #fe9611;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}

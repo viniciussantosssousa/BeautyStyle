@@ -1,0 +1,261 @@
+/* home.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f0fe;
+    color: #222;
+}
+
+/* Background verde */
+.background-verde {
+    background-color: #56b279;
+    padding-bottom: 30px;
+}
+
+/* Header e nav */
+header {
+    padding: 15px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Menu principal */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}
+
+.ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.ul li a:hover {
+    text-decoration: underline;
+}
+
+.ulSepara {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.barra {
+    color: white;
+    font-weight: 600;
+}
+
+/* Botão gradiente */
+.btn-gradient {
+    background: linear-gradient(45deg, #7aaf75, #3d7449);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #529251, #2f592f);
+}
+
+/* Main */
+main {
+    margin-top: 40px;
+}
+
+.main-text {
+    color: white;
+    max-width: 600px;
+}
+
+.main-text h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.main-text h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.main-img img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+/* Layout container do main */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-text,
+.main-img {
+    flex: 1 1 400px;
+    margin: 10px;
+}
+
+/* Seção feedback */
+#feedback {
+    background-color: white;
+    padding: 30px 20px;
+    margin-top: 30px;
+}
+
+.div-carosel {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Div com os carousels */
+.org {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.um, .dois, .trez {
+    flex: 1 1 280px;
+}
+
+/* Feedback form */
+.feedback-container {
+    flex: 1;
+    background: #56b279;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    max-width: 350px;
+}
+
+.feedback-container h2 {
+    margin-bottom: 15px;
+}
+
+.feedback-field label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.feedback-field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    resize: vertical;
+}
+
+.feedback-field textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #3d7449;
+}
+
+/* Footer */
+.footer-estilizado {
+    background-color: #3d7449;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+.contato-icones a {
+    color: white;
+    margin: 0 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contato-icones a:hover {
+    text-decoration: underline;
+}
+
+.footer-creditos {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Menu ícone para mobile - oculto por enquanto */
+.menu-icon {
+    display: none;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .container {
+        display: block;
+    }
+
+    .main-text,
+    .main-img {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .div-carosel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .org {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .feedback-container {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        background: #4d9f61;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+}

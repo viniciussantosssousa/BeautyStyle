@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agendamento - Salão de Beleza</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Agendar Horário</h1>
+    <form action="/agendar" method="post">
+        <label>Nome:</label>
+        <input type="text" name="nomeCliente" required><br>
+
+        <label>Serviço:</label>
+        <input type="text" name="servico" required><br>
+
+        <label>Data e Hora:</label>
+        <input type="datetime-local" name="dataHora" required><br>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" required><br>
+
+        <button type="submit">Agendar</button>
+    </form>
+    <form th:action="@{/agendamentos}" method="get">
+        <button type="submit">Sair</button>
+    </form>
+
+
+    <p th:text="${mensagem}"></p>
+</body>
+</html>

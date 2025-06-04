@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Agendamento</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h1>Editar Agendamento</h1>
+
+<form th:action="@{'/editar/' + ${agendamento.id}}" th:object="${agendamento}" method="post">
+    <label>Nome:</label>
+    <input type="text" th:field="*{nomeCliente}" /><br/>
+
+    <label>Serviço:</label>
+    <input type="text" th:field="*{servico}" /><br/>
+
+    <label>Telefone:</label>
+    <input type="text" th:field="*{telefone}" /><br/>
+
+    <label>Data e Hora:</label>
+    <input type="datetime-local" th:field="*{dataHora}" /><br/>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+</body>
+</html>
