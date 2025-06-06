@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,145 +5,250 @@
 }
 
 body {
-    background-color: rgb(255, 255, 255);
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f0fe; /* Fundo geral claro, como na home */
+    color: #333;
+    line-height: 1.6;
 }
 
-.fundo-verde {
-    background-color: #114440;
-    width: 90%;
-    max-width: 700px;
-    min-height: 80vh;
-    margin: 40px auto;
-    border-radius: 20px;
-    padding: 20px 30px;
+.page-wrapper { /* Novo wrapper para centralizar o conteúdo principal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.content-card {
+    background-color: #114440; /* Cor de fundo principal do card, como o header da home */
+    width: 100%;
+    max-width: 900px; /* Largura máxima para a tabela e conteúdo */
+    margin: 20px auto;
+    border-radius: 12px; /* Bordas arredondadas como nos outros cards */
+    padding: 30px 35px;
     color: white;
-    box-shadow: 0 0 10px rgba(17, 68, 64, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column; /* Para empilhar título, tabela e botão */
 }
 
-.titulo {
+.page-title {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.titulo h1 {
-    font-size: 35px;
-    color: white;
-    font-weight: bold;
+.page-title h1 {
+    font-size: 2.2rem;
+    color: white; /* Título branco sobre fundo verde */
+    font-weight: 700;
+    font-family: 'Georgia', serif; /* Mesma fonte do logo da home */
 }
 
-table {
+.message-feedback {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.message-feedback.success {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #155724;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+.message-feedback.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #721c24;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+    margin-bottom: 30px; /* Espaço antes do botão Voltar */
+}
+
+table.users-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #1b5a4d; /* verde escuro levemente mais claro */
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    background-color: #ffffff; /* Fundo branco para a tabela */
+    border-radius: 8px; /* Bordas arredondadas para a tabela */
+    overflow: hidden; /* Garante que o border-radius seja aplicado às bordas da tabela */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #333; /* Texto escuro para o conteúdo da tabela */
 }
 
-thead {
-    background-color: #0f3a32; /* verde ainda mais escuro para cabeçalho */
+.users-table thead {
+    background-color: #0f3a36; /* Verde mais escuro para o cabeçalho da tabela */
 }
 
-thead th {
-    color: #fe9611;
-    padding: 12px;
-    font-weight: bold;
+.users-table thead th {
+    color: #fe9611; /* Cor laranja para o texto do cabeçalho */
+    padding: 15px;
+    font-weight: 600;
     text-align: left;
+    font-size: 1rem;
+    border-bottom: 2px solid #114440;
 }
 
-tbody tr:hover {
-    background-color: #21755f; /* highlight linha */
-    cursor: pointer;
+.users-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa; /* Linhas alternadas com fundo levemente diferente */
+}
+.users-table tbody tr:hover {
+    background-color: #e9ecef; /* Highlight suave ao passar o mouse */
 }
 
-tbody td {
-    color: white;
-    padding: 12px;
-    border-bottom: 1px solid #0f3a32;
+.users-table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6; /* Linha sutil entre as linhas */
+    vertical-align: middle;
 }
 
-button {
+.users-table tbody td[data-label="Ações"] {
+    text-align: center; /* Centraliza o botão de excluir */
+}
+
+.users-table button {
     padding: 8px 16px;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 20px; /* Botões mais arredondados */
     cursor: pointer;
-    background-image: linear-gradient(#fe9611, #ff5c00);
-    transition: background-color 0.3s ease;
+    background: linear-gradient(45deg, #d9534f, #c9302c); /* Gradiente vermelho para excluir */
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-    background-image: linear-gradient(#ff5c00, #fe9611);
+.users-table button:hover {
+    background: linear-gradient(45deg, #c9302c, #ac2925);
+    transform: translateY(-1px);
+}
+
+.back-home-container {
+    width: 100%;
+    text-align: center; /* Centraliza o botão */
+    margin-top: auto; /* Empurra para o final do .content-card se houver espaço */
+    padding-top: 20px; /* Espaço acima do botão */
+}
+
+.btn-back-home {
+    display: inline-block;
+    padding: 12px 30px;
+    color: white !important;
+    background: linear-gradient(45deg, #fe9611, #ff5c00); /* Gradiente dos botões da home */
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back-home:hover {
+    background: linear-gradient(45deg, #e08000, #cc4c00);
+    transform: translateY(-2px);
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .fundo-verde {
-        width: 95%;
-        padding: 15px 20px;
+    .content-card {
+        padding: 20px;
+        margin: 15px;
     }
 
-    .titulo h1 {
-        font-size: 28px;
+    .page-title h1 {
+        font-size: 1.8rem;
     }
 
-    table, thead, tbody, th, td, tr {
+    /* Tabela responsiva: transforma em blocos */
+    .users-table, 
+    .users-table thead, 
+    .users-table tbody, 
+    .users-table th, 
+    .users-table td, 
+    .users-table tr {
         display: block;
     }
 
-    thead tr {
-        display: none;
+    .users-table thead tr {
+        display: none; /* Esconde o cabeçalho original */
     }
 
-    tbody tr {
+    .users-table tbody tr {
         margin-bottom: 15px;
-        background-color: #114440;
-        border-radius: 12px;
+        border-radius: 8px; /* Mantém o card da linha */
         padding: 10px;
+        background-color: #fff; /* Fundo branco para cada card de linha */
+        border: 1px solid #dee2e6;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .users-table tbody tr:nth-child(even) {
+        background-color: #fff; /* Remove o striping pois cada linha é um card */
     }
 
-    tbody td {
-        padding-left: 50%;
+
+    .users-table tbody td {
+        padding: 8px 10px 8px 40%; /* Espaço para o label */
         position: relative;
-        text-align: left;
+        text-align: right; /* Alinha o valor à direita */
+        border-bottom: none; /* Remove bordas internas, já que cada tr é um card */
+        display: flex; /* Para alinhar label e valor */
+        justify-content: space-between; /* Empurra o valor para a direita */
+        align-items: center;
+    }
+     .users-table tbody td:not(:last-child) { /* Adiciona borda entre os "campos" do card */
+        border-bottom: 1px dashed #e0e0e0;
     }
 
-    tbody td::before {
+
+    .users-table tbody td::before {
         content: attr(data-label);
         position: absolute;
-        left: 15px;
-        top: 12px;
+        left: 10px; /* Posição do label */
+        top: 50%;
+        transform: translateY(-50%);
         font-weight: bold;
-        color: #fe9611;
+        color: #114440; /* Cor do label */
+        text-align: left;
+        width: calc(40% - 20px); /* Largura do label */
     }
 
-    .voltar-home-container {
-    text-align: center; /* Centraliza o botão */
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do botão */
+    .users-table tbody td[data-label="Ações"] {
+        text-align: center; /* Centraliza o botão de ação */
+        padding-left: 10px; /* Remove padding extra quando label não é mais necessário assim */
     }
-
-    .btn-voltar-home {
-        display: inline-block;
-        padding: 10px 20px;
-        color: white;
-        background-image: linear-gradient(#fe9611, #ff5c00); /* Use o mesmo gradiente dos outros botões */
-        border: none;
-        border-radius: 6px;
-        text-decoration: none; /* Remove o sublinhado do link */
-        font-weight: bold;
-        transition: background-image 0.3s ease;
+     .users-table tbody td[data-label="Ações"]::before {
+        display:none; /* Esconde o label "Ações" no mobile se o botão já for autoexplicativo */
     }
+     .users-table tbody td[data-label="Ações"] form {
+        width: 100%; /* Faz o form ocupar a largura para centralizar o botão */
+     }
 
-    .btn-voltar-home:hover {
-        background-image: linear-gradient(#ff5c00, #fe9611); /* Efeito de hover */
+
+    .btn-back-home {
+        padding: 10px 25px;
+        font-size: 1rem;
+        width: 100%; /* Botão "Voltar" ocupa largura total em mobile */
+        max-width: 300px; /* Mas não fica excessivamente largo */
+        margin: 0 auto; /* Centraliza */
     }
+}
 
-    /* Ajustes responsivos para o botão se necessário */
-    @media (max-width: 768px) {
-        .btn-voltar-home {
-            padding: 8px 16px;
-            font-size: 16px;
-        }
+@media (max-width: 480px) {
+    .content-card {
+        padding: 15px;
+        margin: 10px;
+    }
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
+    .users-table tbody td {
+        padding-left: 45%; /* Mais espaço para o label em telas muito pequenas */
+    }
+    .users-table tbody td::before {
+         width: calc(45% - 15px);
     }
 }

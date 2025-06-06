@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8" />
-    <title>Gerenciar Usuários</title>
+    <title>Gerenciar Usuários | BeautyStyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/usuarios.css}" />
+    <!-- Opcional: Font Awesome se quiser usar ícones nos botões ou em outros locais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
-    <div class="fundo-verde">
-        <div class="titulo">
-            <h1>Usuários Cadastrados</h1>
+    <div class="page-wrapper">
+        <div class="content-card">
+            <div class="page-title">
+                <h1>Usuários Cadastrados</h1>
+            </div>
+
+            <div th:if="${mensagemExclusao}" class="message-feedback success" th:text="${mensagemExclusao}"></div>
+            <div th:if="${erroExclusao}" class="message-feedback error" th:text="${erroExclusao}"></div>
+
+            <div class="table-responsive-wrapper">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Tipo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.id}" data-label="ID">1</td>
+                            <td th:text="${usuario.nome}" data-label="Nome">João da Silva</td>
+                            <td th:text="${usuario.email}" data-label="Email">joao.silva@example.com</td>
+                            <td th:text="${usuario.telefone}" data-label="Telefone">(XX) XXXXX-XXXX</td>
+                            <td th:text="${usuario.tipo}" data-label="Tipo">CLIENTE</td>
+                            <td data-label="Ações">
+                                <form th:action="@{/api/usuarios/excluir/{id}(id=${usuario.id})}" method="post" style="display: inline;">
+                                    <button type="submit" title="Excluir usuário">
+                                        <i class="fas fa-trash-alt"></i> Excluir
+                                    </button>
+                                </form>
+                                <!-- Poderia adicionar um botão de editar aqui também, se necessário -->
+                                <!-- 
+                                <form th:action="@{/api/usuarios/editar/{id}(id=${usuario.id})}" method="get" style="display: inline; margin-left: 5px;">
+                                    <button type="submit" title="Editar usuário" class="btn-edit">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                </form>
+                                -->
+                            </td>
+                        </tr>
+                        <!-- Exemplo de linha para visualização (remover ou comentar se ${usuarios} estiver populado) -->
+                        <!-- 
+                        <tr>
+                            <td data-label="ID">2</td>
+                            <td data-label="Nome">Maria Oliveira</td>
+                            <td data-label="Email">maria.oliveira@example.com</td>
+                            <td data-label="Telefone">(YY) YYYYY-YYYY</td>
+                            <td data-label="Tipo">ADMIN</td>
+                            <td data-label="Ações">
+                                <form action="#" method="post" style="display: inline;">
+                                    <button type="submit" title="Excluir usuário"><i class="fas fa-trash-alt"></i> Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                         -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="back-home-container">
+                <a th:href="@{/home}" class="btn-back-home">
+                    <i class="fas fa-arrow-left"></i> Voltar para Home
+                </a>
+            </div>
         </div>
-
-        <div class="voltar-home-container">
-            <a th:href="@{/home}" class="btn-voltar-home">Voltar para Home</a>
-        </div>
-
-        <p th:if="${mensagemExclusao}" style="color: green; font-weight: bold; margin-bottom: 10px;" th:text="${mensagemExclusao}"></p>
-        <p th:if="${erroExclusao}" style="color: red; font-weight: bold; margin-bottom: 10px;" th:text="${erroExclusao}"></p>
-
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Tipo</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.id}" data-label="ID">1</td>
-                    <td th:text="${usuario.nome}" data-label="Nome">João</td>
-                    <td th:text="${usuario.email}" data-label="Email">joao@email.com</td>
-                    <td th:text="${usuario.telefone}" data-label="Telefone">99999-9999</td>
-                    <td th:text="${usuario.tipo}" data-label="Tipo">CLIENTE</td>
-                    <td data-label="Ações">
-                        <form th:action="@{/api/usuarios/excluir/{id}(id=${usuario.id})}" method="post" th:object="${usuario}">
-                            <button type="submit">Excluir</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </body>
+
 </html>

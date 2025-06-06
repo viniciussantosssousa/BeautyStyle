@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,9 +9,103 @@
     <link rel="stylesheet" th:href="@{/css/home.css}" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <style>
+        .feedback-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin: 40px auto;
+        }
+
+        .feedback-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .feedback-container p {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .feedback-display-area {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feedback-display-area h3 {
+            text-align: center;
+        }
+
+        .feedback-item {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid #ff5c00 !important;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .feedback-message {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .feedback-author {
+            display: block;
+            text-align: right;
+            color: #ff5c00;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff5c00;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -24,23 +117,34 @@
                     <div class="logo">
                         <a th:href="@{/home}">Beauty Style</a>
                     </div>
-                    <ul class="ul">
+                    <ul class="ul"> <!-- Este é o menu que será mostrado/escondido -->
                         <li><a th:href="@{/home}">Home</a></li>
-                        <li><a href="#feedback">FeedBack</a></li>
+                        <li><a href="#feedback-section">FeedBack</a></li>
                         <li><a href="#contato">Contato</a></li>
-                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/agendar}"><button class="btn-gradient">Agendar</button></a></li>
+                        <li sec:authorize="hasRole('CLIENTE')"><a th:href="@{/agendar}"><button
+                                    class="btn-gradient">Agendar</button></a></li>
+
+                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/agendar}"><button
+                                    class="btn-gradient">Agendar (Admin)</button></a></li>
                         <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/agendamentos}">Ver Agendamentos</a></li>
-                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/usuarios/gerenciar}">Gerenciar Contas</a></li>
-                        
+                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/api/usuarios/gerenciar}">Gerenciar
+                                Contas</a></li>
+
                         <li sec:authorize="isAuthenticated()">
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="dropdown-toggle nav-link-perfil" href="#" role="button" id="dropdownPerfil"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Perfil
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownPerfil">
-                                    <li><span class="dropdown-item-text" th:text="${#authentication.name}">Nome do Usuário</span></li>
-                                    <li><span class="dropdown-item-text" th:text="${#strings.replace(#authentication.authorities[0].authority, 'ROLE_', '')}">Status da Conta</span></li>
-                                    <li><hr class="dropdown-divider"></li>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownPerfil">
+                                    <li><span class="dropdown-item-text" th:text="${#authentication.name}">Nome do
+                                            Usuário</span></li>
+                                    <li><span class="dropdown-item-text"
+                                            th:text="${#strings.replace(#authentication.authorities[0].authority, 'ROLE_', '')}">Status
+                                            da Conta</span></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
                                     <li>
                                         <form th:action="@{/logout}" method="post">
                                             <button type="submit" class="dropdown-item">Sair</button>
@@ -56,7 +160,7 @@
                             <li><a th:href="@{/cadastro}">Cadastro</a></li>
                         </div>
                     </ul>
-                    <div class="menu-icon">
+                    <div class="menu-icon"> <!-- Este é o ícone que será clicado -->
                         <img th:src="@{/img/Menu.png}" alt="Botão de menu" />
                     </div>
                 </nav>
@@ -64,125 +168,171 @@
         </header>
 
         <main>
-            <div class="container">
+            <div class="container main-content-container">
                 <div class="main-text">
                     <h1>Realçando sua beleza.</h1>
                     <h1>Um fio de cada vez!</h1>
                     <h3>Agende seu horário agora!!</h3>
                     <div>
-                        <a href="https://wa.me/5534999653475"><button class="btn-gradient">Agendar agora</button></a>
+                        <a href="https://wa.me/5534999653475" target="_blank"><button class="btn-gradient">Agendar
+                                agora</button></a>
                     </div>
                 </div>
                 <div class="main-img">
-                    <img th:src="@{/img/LuizOtavio.png}" alt="Luiz Otavio" />
+                    <img th:src="@{/img/LuizOtavio.png}" alt="Imagem de Luiz Otavio" />
                 </div>
             </div>
         </main>
     </div>
 
-    <section id="feedback">
-        <div class="div-carosel">
-            <div class="org">
-                <div class="um">
-                    <div id="carousel1" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+    <section id="feedback-section" class="feedback-main-section">
+        <div class="container">
+            <h2>O que nossos clientes dizem</h2>
+            <!-- Carrosséis -->
+            <div class="carrossel-geral-container">
+                <div class="org">
+                    <div class="um">
+                        <div id="carousel1" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
                             </div>
-                            <div class="carousel-item">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 1" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/cabelos/cabelo2.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 2" />
+                                </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel1"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel1"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel1"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel1"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-                </div>
 
-                <div class="dois">
-                    <div id="carousel2" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+                    <div class="dois">
+                        <div id="carousel2" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
                             </div>
-                            <div class="carousel-item">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{/img/cabelos/cabelo3.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 3" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/cabelos/cabelo4.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 4" />
+                                </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel2"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel2"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel2"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-                </div>
 
-                <div class="trez">
-                    <div id="carousel3" class="carousel slide">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel3" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carousel3" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+                    <div class="trez">
+                        <div id="carousel3" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
                             </div>
-                            <div class="carousel-item">
-                                <img th:src="@{/img/cabelos/cabelo1.png}" class="d-block w-100" alt="..." />
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{/img/cabelos/cabelo5.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 5" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img th:src="@{/img/cabelos/cabelo6.png}" class="d-block w-100"
+                                        alt="Imagem de cabelo 6" />
+                                </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel3"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel3"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel3"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel3"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
             </div>
+
+            <!-- Seção do Vídeo -->
+            <div class="video-section-container">
+                <h3>Conheça nosso espaço</h3>
+                <div class="video-wrapper">
+                    <!-- ATRIBUTO 'autoplay' REMOVIDO -->
+                    <video controls muted loop>
+                        <source th:src="@{/img/cabelos/video.mp4}" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </div>
+
 
             <div class="feedback-container">
-                <h2>Deixe seu Feedback</h2>
-                <form id="feedbackForm" method="post" th:action="@{/enviar-feedback}">
-                    <div class="feedback-field">
-                        <label for="feedbackText">Seu Feedback:</label>
-                        <textarea id="feedbackText" name="feedback" rows="4" placeholder="Conte-nos sua experiência..."
-                            required></textarea>
+                <h2>Deixe o seu Feedback</h2>
+                <p>A sua opinião é muito importante para nós!</p>
+
+                <form id="feedback-form" th:action="@{/feedback}" th:object="${novoFeedback}" method="POST">
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" th:field="*{mensagem}" rows="5" required
+                            placeholder="Escreva aqui a sua mensagem..."></textarea>
                     </div>
-                    <button type="submit" class="btn-gradient">Enviar Feedback</button>
+                    <button type="submit">Enviar Feedback</button>
                 </form>
             </div>
-        </div>
+
+            <div class="feedback-display-area">
+                <h3>Feedbacks Recebidos:</h3>
+                <div th:if="${#lists.isEmpty(feedbacks)}">
+                    <p>Ainda não há feedbacks. Seja o primeiro a comentar!</p>
+                </div>
+                <div th:each="fb : ${feedbacks}" class="feedback-item">
+                    <p class="feedback-message" th:text="${fb.mensagem}">Aqui vai a mensagem do feedback.</p>
+                    <strong class="feedback-author" th:text="${'- ' + fb.nome}">- Nome do Autor</strong>
+
+                    <div sec:authorize="hasRole('ADMIN')" style="text-align: right; margin-top: 10px;">
+                        <form th:action="@{/feedback/excluir/{id}(id=${fb.id})}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
     </section>
 
     <section id="contato">
@@ -199,9 +349,14 @@
         </footer>
     </section>
 
+    <!-- Scripts JavaScript -->
     <script th:src="@{/js/main.js}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

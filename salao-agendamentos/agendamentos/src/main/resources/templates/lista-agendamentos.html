@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Agendamentos</title>
     <meta charset="UTF-8" />
-    <style>
-        .mensagem-sucesso {
-            color: green;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .mensagem-erro {
-            color: red;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Lista de Agendamentos | BeautyStyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/agendamentos.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-    <h1>Agendamentos Marcados</h1>
+    <div class="page-wrapper">
+        <div class="content-card">
+            <div class="page-title">
+                <h1>Agendamentos Marcados</h1>
+            </div>
 
-    <p th:if="${mensagem}" class="mensagem-sucesso" th:text="${mensagem}"></p>
-    <p th:if="${erro}" class="mensagem-erro" th:text="${erro}"></p>
+            <div th:if="${mensagem}" class="message-feedback success" th:text="${mensagem}"></div>
+            <div th:if="${erro}" class="message-feedback error" th:text="${erro}"></div>
 
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Serviço</th>
-            <th>Data e Hora</th>
-            <th>Telefone</th>
-            <th colspan="2">Ação</th> </tr>
-        <tr th:each="agendamento : ${agendamentos}">
-            <td th:text="${agendamento.id}"></td>
-            <td th:text="${agendamento.nomeCliente}"></td>
-            <td th:text="${agendamento.servico}"></td>
-            <td th:text="${agendamento.dataHora}"></td>
-            <td th:text="${agendamento.telefone}"></td>
-            <td>
-                <form th:action="@{'/cancelar/' + ${agendamento.id}}" method="post">
-                    <input type="hidden" name="_method" value="delete" />
-                    <button type="submit">Cancelar</button>
-                </form>
-            </td>
-            <td>
-                <form th:action="@{'/editar/' + ${agendamento.id}}" method="get">
-                    <button type="submit">Editar</button>
-                </form>
-            </td>
-        </tr>
-    </table>
-    
-    <br>
-    <form th:action="@{/agendar}" method="get">
-        <button type="submit">Agendar Novo</button>
-    </form>
-
-    <br>
-    <form th:action="@{/home}" method="get">
-        <button type="submit">Sair</button>
-    </form>
+            <div class="table-responsive-wrapper">
+                <table class="appointments-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Serviço</th>
+                            <th>Data e Hora</th>
+                            <th>Telefone</th>
+                            <th colspan="2">Ações</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="agendamento : ${agendamentos}">
+                            <td th:text="${agendamento.id}" data-label="ID">A001</td>
+                            <td th:text="${agendamento.nomeCliente}" data-label="Cliente">Nome do Cliente</td>
+                            <td th:text="${agendamento.servico}" data-label="Serviço">Corte Masculino</td>
+                            <!-- Assumindo que agendamento.dataHora é um objeto temporal (ex: LocalDateTime) -->
+                            <td th:text="${agendamento.dataHora != null ? #temporals.format(agendamento.dataHora, 'dd/MM/yyyy HH:mm') : 'N/A'}" data-label="Data e Hora">01/01/2025 10:00</td>
+                            <td th:text="${agendamento.telefone}" data-label="Telefone">(XX) XXXXX-XXXX</td>
+                            <td class="actions-cell" data-label="Cancelar">
+                                <form th:action="@{'/cancelar/' + ${agendamento.id}}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" /> 
+                                    <button type="submit" class="btn-action btn-cancel" title="Cancelar agendamento">
+                                        <i class="fas fa-times-circle"></i> Cancelar
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="actions-cell" data-label="Editar">
+                                <form th:action="@{'/editar/' + ${agendamento.id}}" method="get">
+                                    <button type="submit" class="btn-action btn-edit" title="Editar agendamento">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <!-- Linha para quando não houver agendamentos -->
+                        <tr th:if="${#lists.isEmpty(agendamentos)}">
+                            <td colspan="7" style="text-align: center; padding: 20px; color: #555;">
+                                Nenhum agendamento encontrado.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="action-buttons-container">
+                <a th:href="@{/agendar}" class="btn-primary-action">
+                    <i class="fas fa-plus-circle"></i> Agendar Novo
+                </a>
+                <a th:href="@{/home}" class="btn-secondary-action">
+                    <i class="fas fa-arrow-left"></i> Voltar para Home
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
