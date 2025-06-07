@@ -1,0 +1,166 @@
+/* editar-agendamento.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #114440; /* Fundo verde escuro na página toda */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.page-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 550px; /* Largura do formulário */
+    text-align: center;
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    color: #114440; /* Título verde sobre o fundo branco */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    font-size: 1rem;
+    color: #6c757d; /* Subtítulo cinza */
+}
+
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os campos */
+}
+
+.form-field {
+    text-align: left;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.form-field input[type="text"],
+.form-field input[type="datetime-local"],
+.form-field input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #495057;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field input::placeholder {
+    color: #adb5bd;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #fe9611; /* Cor laranja no foco */
+    box-shadow: 0 0 0 0.2rem rgba(254, 150, 17, 0.25);
+}
+
+/* Estilização para o ícone do calendário no input datetime-local */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+
+.action-buttons-container {
+    display: flex;
+    flex-direction: column; /* Botões um em cima do outro */
+    gap: 15px; /* Espaço entre os botões */
+    margin-top: 25px; /* Espaço acima do primeiro botão */
+}
+
+.btn-primary-action,
+.btn-secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 25px;
+    width: 100%; /* Botões ocupam a largura total */
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary-action {
+    background: linear-gradient(45deg, #fe9611, #ff5c00);
+    color: white !important;
+}
+.btn-primary-action:hover {
+    background: linear-gradient(45deg, #e08000, #cc4c00);
+    transform: translateY(-2px);
+}
+
+.btn-secondary-action {
+    background: transparent;
+    border: 2px solid #6c757d; /* Cinza para secundário */
+    color: #6c757d !important;
+}
+.btn-secondary-action:hover {
+    background: #6c757d;
+    color: white !important;
+    border-color: #6c757d;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .form-card {
+        padding: 25px 20px;
+        margin: 10px;
+    }
+
+    .page-title h1 {
+        font-size: 1.8rem;
+    }
+
+    .page-title p {
+        font-size: 0.95rem;
+    }
+}

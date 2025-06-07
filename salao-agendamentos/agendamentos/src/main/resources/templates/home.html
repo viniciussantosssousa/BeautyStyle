@@ -121,8 +121,6 @@
                         <li><a th:href="@{/home}">Home</a></li>
                         <li><a href="#feedback-section">FeedBack</a></li>
                         <li><a href="#contato">Contato</a></li>
-                        <li sec:authorize="hasRole('CLIENTE')"><a th:href="@{/agendar}"><button
-                                    class="btn-gradient">Agendar</button></a></li>
 
                         <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/agendar}"><button
                                     class="btn-gradient">Agendar (Admin)</button></a></li>
@@ -174,7 +172,7 @@
                     <h1>Um fio de cada vez!</h1>
                     <h3>Agende seu horário agora!!</h3>
                     <div>
-                        <a href="https://wa.me/5534999653475" target="_blank"><button class="btn-gradient">Agendar
+                        <a href="https://wa.me/553499053303" target="_blank"><button class="btn-gradient">Agendar
                                 agora</button></a>
                     </div>
                 </div>
@@ -187,7 +185,6 @@
 
     <section id="feedback-section" class="feedback-main-section">
         <div class="container">
-            <h2>O que nossos clientes dizem</h2>
             <!-- Carrosséis -->
             <div class="carrossel-geral-container">
                 <div class="org">
@@ -341,11 +338,23 @@
                 <a href="https://www.instagram.com/luizzotaviobraga" target="_blank">
                     <i class="fab fa-instagram"></i> BeautyStyle
                 </a>
-                <a href="https://wa.me/5534999653475" target="_blank">
-                    <i class="fab fa-whatsapp"></i> (34) 99965-3475
+                <a href="https://wa.me/553499053303" target="_blank">
+                    <i class="fab fa-whatsapp"></i> (34) 99905-3303
                 </a>
             </div>
             <p class="footer-creditos">© 2025 BeautyStyle. Todos os direitos reservados.</p>
+            <div class="devs">
+                <p>Site desenvolvido por: </p>
+                <a href="https://www.instagram.com/vinicinss/" target="_blank">
+                    <i class="fab fa-instagram"></i> Vinicius Santos Sousa
+                </a>
+                <a href="https://www.instagram.com/lucashenrique_xz" target="_blank">
+                    <i class="fab fa-instagram"></i> Lucas Henrique
+                </a>
+                <a href="https://www.instagram.com/bielzinrique" target="_blank">
+                    <i class="fab fa-instagram"></i> Gabriel Henrique
+                </a>
+            </div>
         </footer>
     </section>
 

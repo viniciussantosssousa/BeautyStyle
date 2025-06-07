@@ -1,27 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Editar Agendamento</title>
     <meta charset="UTF-8" />
+    <title>Editar Agendamento | BeautyStyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/form-edicao.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-<h1>Editar Agendamento</h1>
+    <div class="page-wrapper">
+        <div class="form-card">
+            <div class="page-title">
+                <h1>Editar Agendamento</h1>
+                <p>Atualize os detalhes do horário abaixo.</p>
+            </div>
 
-<form th:action="@{'/editar/' + ${agendamento.id}}" th:object="${agendamento}" method="post">
-    <label>Nome:</label>
-    <input type="text" th:field="*{nomeCliente}" /><br/>
+            <!-- Formulário de Edição -->
+            <form th:action="@{'/editar/' + ${agendamento.id}}" th:object="${agendamento}" method="post" class="appointment-form">
+                <div class="form-field">
+                    <label for="nomeCliente">Nome do Cliente</label>
+                    <input type="text" id="nomeCliente" th:field="*{nomeCliente}" />
+                </div>
 
-    <label>Serviço:</label>
-    <input type="text" th:field="*{servico}" /><br/>
+                <div class="form-field">
+                    <label for="servico">Serviço</label>
+                    <input type="text" id="servico" th:field="*{servico}" />
+                </div>
 
-    <label>Telefone:</label>
-    <input type="text" th:field="*{telefone}" /><br/>
+                <div class="form-field">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" th:field="*{telefone}" />
+                </div>
 
-    <label>Data e Hora:</label>
-    <input type="datetime-local" th:field="*{dataHora}" /><br/>
+                <div class="form-field">
+                    <label for="dataHora">Data e Hora</label>
+                    <!-- Formatação do valor do campo para o padrão ISO que o input datetime-local espera -->
+                    <input type="datetime-local" id="dataHora" th:field="*{dataHora}" />
+                </div>
 
-    <button type="submit">Salvar Alterações</button>
-</form>
-
+                <div class="action-buttons-container">
+                    <button type="submit" class="btn-primary-action">
+                        <i class="fas fa-save"></i> Salvar Alterações
+                    </button>
+                    <a th:href="@{/agendamentos}" class="btn-secondary-action">
+                         <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

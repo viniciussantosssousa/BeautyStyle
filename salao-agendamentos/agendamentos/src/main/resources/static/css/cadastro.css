@@ -1,3 +1,4 @@
+/* Estilos Gerais e Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,26 +7,7 @@
     list-style: none !important;
 }
 
-.btn-gradient {
-    padding: 10px 20px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    background-image: linear-gradient(#fe9611, #ff5c00);
-    border-radius: 6px;
-}
-
-.logo {
-    margin-top: 15px;
-}
-
-.logo a {
-    font-family: Serifada;
-    font-size: 30px;
-    font-weight: bold;
-    color: #fe9611;
-}
-
+/* Estilos do Container Principal */
 .background-verde {
     background-color: #114440;
     width: 800px;
@@ -41,54 +23,137 @@
     border-radius: 10px;
 }
 
+/* Estilo do Logo */
+.logo {
+    margin-top: 15px;
+}
+
+.logo a {
+    font-family: Serifada, sans-serif; /* Adicionado fallback de fonte */
+    font-size: 30px;
+    font-weight: bold;
+    color: #fe9611;
+}
+
+/* Estilo do Título da Página */
 .titulo {
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .titulo h1 {
     font-size: 35px;
 }
 
+/* Container do Formulário */
 .dados {
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-    padding-right: 30px;
+    align-items: center; /* Centraliza o formulário dentro do container */
 }
 
-.senha {
-    padding-left: 35px;
+/*
+ * CORREÇÃO PRINCIPAL:
+ * Aplicando flexbox para alinhar cada linha do formulário.
+*/
+.dados .nome,
+.dados .telefone,
+.dados .email,
+.dados .senha {
+    display: flex;
+    align-items: center;      /* Alinha verticalmente label e input */
+    justify-content: space-between; /* Empurra a label para um lado e o input para o outro */
+    width: 350px;             /* Define uma largura total para a linha */
+    margin-bottom: 15px;      /* Espaçamento entre os campos */
 }
 
-.senha input[type="password"]::-ms-reveal,
-.senha input[type="password"]::-ms-clear,
-.senha input[type="password"]::-webkit-credentials-auto-fill-button {
-    display: none;
+.senha{
+    margin-left: 10px;
 }
 
-.botao {
-    padding-top: 15px;
+/* Mensagem de erro */
+.dados div[th\:if] {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.dados div {
-    margin: 10px 0;
+/* Estilo para todas as Labels */
+.dados label {
+    flex-basis: 80px;         /* Define uma largura base fixa para todas as labels */
+    text-align: left;         /* Alinha o texto da label */
+    margin-right: 10px;       /* Espaço entre a label e o input */
+    font-size: 16px;
 }
 
+/* Estilo para todos os Inputs */
 .dados input {
-    margin-top: 5px;
     padding: 8px;
     border-radius: 5px;
     border: none;
     width: 250px;
+    font-size: 14px;
 }
 
+/* Ajuste específico para o campo de senha para acomodar o botão do olho */
+.dados .senha {
+    justify-content: flex-start; /* Sobrescreve o space-between para juntar input e botão */
+}
+
+.dados .senha label {
+    /* Mantém o mesmo tamanho das outras labels para consistência */
+    flex-basis: 80px;
+    margin-right: 10px;
+}
+
+.dados .senha input {
+    width: 215px; /* Reduz um pouco a largura para caber o ícone */
+}
+
+/* Esconde o ícone de "revelar senha" padrão do Edge/IE */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* Botão de mostrar/ocultar senha */
+#toggleSenha {
+    margin-left: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 0; /* Ajuda no alinhamento vertical */
+}
+
+#iconeOlho {
+    width: 20px;
+    filter: invert(1);
+}
+
+/* Container do Botão de Registro */
+.botao {
+    padding-top: 15px;
+    width: 350px; /* Mesma largura das linhas para centralização correta */
+    text-align: center; /* Centraliza o botão dentro da div */
+}
+
+/* Estilo do Botão Principal */
+.btn-gradient {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(#fe9611, #ff5c00);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%; /* Faz o botão ocupar a largura do container .botao */
+}
+
+/* Link para a página de Login */
 .registrar {
     padding-top: 20px;
     color: white;
@@ -97,8 +162,10 @@
 
 .registrar a {
     color: #fe9611;
+    font-weight: bold;
 }
 
+/* Link para Voltar para a Home */
 .voltar-home {
     padding-top: 10px;
     color: white;

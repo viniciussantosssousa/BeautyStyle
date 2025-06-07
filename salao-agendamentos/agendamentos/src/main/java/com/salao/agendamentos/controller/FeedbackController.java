@@ -40,7 +40,7 @@ public class FeedbackController {
         
         feedbacksRecebidos.add(feedback);
         return "redirect:/feedback";
-    } // <<<<<<<<<< CORREÇÃO AQUI: A chave que fecha o método 'processarFeedback' veio para cá.
+    } 
 
     @PostMapping("/feedback/excluir/{id}")
     public String excluirFeedback(@PathVariable("id") Long id) {

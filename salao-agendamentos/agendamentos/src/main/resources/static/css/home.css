@@ -426,6 +426,12 @@ main {
     height: auto;
 }
 
+.devs a{
+    text-decoration: none;
+    justify-content: space-between;
+    color: white;
+}
+
 /* Responsivo - Menu Overlay */
 @media (max-width: 900px) {
     .container.main-content-container { 

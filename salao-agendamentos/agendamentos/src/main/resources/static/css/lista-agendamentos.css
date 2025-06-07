@@ -9,11 +9,11 @@ body {
     background-color: #e8f0fe; /* Fundo geral claro, como na home */
     color: #333;
     line-height: 1.6;
-    padding-top: 20px; /* Espaço no topo */
-    padding-bottom: 20px; /* Espaço na base */
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.page-wrapper { /* Wrapper para centralizar o conteúdo principal */
+.page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@ body {
 .content-card {
     background-color: #114440; /* Verde escuro do tema home */
     width: 100%;
-    max-width: 1000px; /* Aumentado para tabelas mais largas */
+    max-width: 1000px; /* Aumentar um pouco para tabelas mais largas */
     margin: 20px; /* Adiciona margem em volta do card */
     border-radius: 12px;
     padding: 30px 35px;
@@ -40,7 +40,7 @@ body {
 }
 
 .page-title h1 {
-    font-size: 2.4rem; 
+    font-size: 2.4rem;
     color: white;
     font-weight: 700;
     font-family: 'Georgia', serif; /* Mesma fonte do logo da home */
@@ -48,31 +48,31 @@ body {
 
 .message-feedback {
     text-align: center;
-    font-weight: 500; 
-    margin: 0 auto 20px auto; 
+    font-weight: 500;
+    margin: 0 auto 20px auto;
     padding: 12px 15px;
-    border-radius: 8px; 
+    border-radius: 8px;
     font-size: 1rem;
-    max-width: 80%; 
+    max-width: 80%;
 }
 .message-feedback.success {
-    background-color: #d4edda; 
-    color: #155724; 
+    background-color: #d4edda;
+    color: #155724;
     border: 1px solid #c3e6cb;
 }
 .message-feedback.error {
-    background-color: #f8d7da; 
-    color: #721c24; 
+    background-color: #f8d7da;
+    color: #721c24;
     border: 1px solid #f5c6cb;
 }
 
 
 .table-responsive-wrapper {
     width: 100%;
-    overflow-x: auto; 
+    overflow-x: auto;
     margin-bottom: 30px;
-    border-radius: 8px; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 table.appointments-table {
@@ -150,10 +150,10 @@ table.appointments-table {
 }
 
 .btn-action.btn-edit {
-    background: linear-gradient(45deg, #5bc0de, #31b0d5); /* Azul mais vivo */
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Azul mais vivo */
 }
 .btn-action.btn-edit:hover {
-    background: linear-gradient(45deg, #31b0d5, #269abc);
+    background: linear-gradient(45deg, #2980b9, #2471a3);
     transform: translateY(-1px);
 }
 
@@ -180,7 +180,7 @@ table.appointments-table {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
     min-width: 200px; 
     justify-content: center; 
 }

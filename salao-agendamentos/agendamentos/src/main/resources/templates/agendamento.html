@@ -1,31 +1,54 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Agendamento - Salão de Beleza</title>
     <meta charset="UTF-8" />
+    <title>Agendamento | BeautyStyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/agendamento.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-    <h1>Agendar Horário</h1>
-    <form action="/agendar" method="post">
-        <label>Nome:</label>
-        <input type="text" name="nomeCliente" required><br>
+    <div class="page-wrapper">
+        <div class="form-card">
+            <div class="page-title">
+                <h1>Agendar Horário</h1>
+                <p>Preencha os dados abaixo para marcar o horário.</p>
+            </div>
 
-        <label>Serviço:</label>
-        <input type="text" name="servico" required><br>
+            <!-- Mensagem de sucesso ou erro -->
+            <div th:if="${mensagem}" class="message-feedback success" th:text="${mensagem}"></div>
 
-        <label>Data e Hora:</label>
-        <input type="datetime-local" name="dataHora" required><br>
+            <form action="/agendar" method="post" class="appointment-form">
+                <div class="form-field">
+                    <label for="nomeCliente">Nome Completo</label>
+                    <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Digite seu nome" required>
+                </div>
 
-        <label>Telefone:</label>
-        <input type="text" name="telefone" required><br>
+                <div class="form-field">
+                    <label for="servico">Serviço Desejado</label>
+                    <input type="text" id="servico" name="servico" required>
+                </div>
 
-        <button type="submit">Agendar</button>
-    </form>
-    <form th:action="@{/agendamentos}" method="get">
-        <button type="submit">Sair</button>
-    </form>
+                <div class="form-field">
+                    <label for="dataHora">Data e Hora</label>
+                    <input type="datetime-local" id="dataHora" name="dataHora" required>
+                </div>
 
+                <div class="form-field">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+                </div>
 
-    <p th:text="${mensagem}"></p>
+                <div class="action-buttons-container">
+                    <button type="submit" class="btn-primary-action">
+                        <i class="fas fa-calendar-check"></i> Confirmar Agendamento
+                    </button>
+                    <a th:href="@{/agendamentos}" class="btn-secondary-action">
+                         <i class="fas fa-arrow-left"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
