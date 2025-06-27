@@ -2,7 +2,8 @@ package com.salao.agendamentos.config;
 
 import com.salao.agendamentos.security.UsuarioDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,9 +22,27 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/home", "/login", "/api/usuarios/login", "/cadastro", "/api/usuarios/cadastro-form", "/css/**", "/img/**", "/js/**").permitAll()
-                .requestMatchers("/agendar", "/agendamentos", "/cancelar/**", "/editar/**").hasRole("ADMIN") // Apenas ADMIN pode acessar
-                .requestMatchers("/api/usuarios/gerenciar", "/api/usuarios/excluir/**").hasRole("ADMIN") // Já existia, mas mantendo claro
+                // Lista de URLs públicas
+                .requestMatchers(
+                    "/", 
+                    "/home", 
+                    "/login", 
+                    "/api/usuarios/login", 
+                    "/cadastro", 
+                    "/api/usuarios/cadastro-form", 
+                    "/css/**", 
+                    "/img/**", 
+                    "/js/**",
+                    // ==============================================================================
+                    // ============== CORREÇÃO FINAL ADICIONADA AQUI ================================
+                    // Adicionando o endpoint de confirmação à lista de permissões públicas
+                    "/api/usuarios/confirm/**" 
+                    // ==============================================================================
+                ).permitAll()
+                // Lista de URLs restritas ao ADMIN
+                .requestMatchers("/agendar", "/agendamentos", "/cancelar/**", "/editar/**").hasRole("ADMIN") 
+                .requestMatchers("/api/usuarios/gerenciar", "/api/usuarios/excluir/**").hasRole("ADMIN")
+                // Qualquer outra requisição precisa de autenticação
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -57,5 +76,4 @@ public class SecurityConfig {
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
     }
-
 }

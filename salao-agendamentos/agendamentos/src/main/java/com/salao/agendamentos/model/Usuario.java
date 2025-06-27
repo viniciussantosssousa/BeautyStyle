@@ -25,4 +25,7 @@ public class Usuario {
     private String senha;
 
     private String tipo;
+
+    // ============== CAMPO ADICIONADO ===============
+    private boolean enabled = false; // Por padrão, a conta começa desativada
 }
