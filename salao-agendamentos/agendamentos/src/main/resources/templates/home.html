@@ -14,6 +14,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <style>
+        /* ============================================================================== */
+        /* ======================= CÓDIGO DE CORREÇÃO ADICIONADO ======================== */
+        /* ============================================================================== */
+        
+        /* Container que segura o texto e a imagem principal */
+        .main-content-container {
+            display: flex; /* Ativa o Flexbox para alinhar os itens lado a lado */
+            align-items: center; /* Centraliza os itens verticalmente */
+            justify-content: space-around; /* Distribui o espaço entre eles */
+            flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo em telas pequenas */
+            gap: 2rem; /* Adiciona um espaço entre o texto e a imagem */
+        }
+
+        /* Ajustes na div que contém a imagem */
+        .main-img {
+            flex-basis: 45%; /* Define um tamanho base para a imagem, deixando espaço para o texto */
+            min-width: 300px; /* Garante que a imagem não fique muito pequena */
+        }
+        
+        /* Estilos para a imagem em si, para evitar corte e distorção */
+        .main-img img {
+            width: 100%; /* Faz a imagem ocupar 100% da largura de seu container (.main-img) */
+            height: auto; /* A altura se ajusta automaticamente para manter a proporção */
+            object-fit: cover; /* Garante que a imagem cubra a área sem distorcer (bom para imagens de retrato) */
+            border-radius: 20px; /* Adiciona bordas arredondadas para um visual mais suave */
+            max-height: 600px; /* Define uma altura máxima para a imagem */
+        }
+
+        /* Responsividade para telas menores (celulares) */
+        @media (max-width: 768px) {
+            .main-content-container {
+                flex-direction: column; /* Empilha o texto e a imagem verticalmente */
+                text-align: center; /* Centraliza o texto */
+            }
+            .main-text h1, .main-text h3 {
+                text-align: center;
+            }
+        }
+
+        /* Estilos originais do feedback */
         .feedback-container {
             background-color: #ffffff;
             padding: 40px;
@@ -117,8 +157,7 @@
                     <div class="logo">
                         <a th:href="@{/home}">Beauty Style</a>
                     </div>
-                    <ul class="ul"> <!-- Este é o menu que será mostrado/escondido -->
-                        <li><a th:href="@{/home}">Home</a></li>
+                    <ul class="ul"> <li><a th:href="@{/home}">Home</a></li>
                         <li><a href="#feedback-section">FeedBack</a></li>
                         <li><a href="#contato">Contato</a></li>
 
@@ -158,8 +197,7 @@
                             <li><a th:href="@{/cadastro}">Cadastro</a></li>
                         </div>
                     </ul>
-                    <div class="menu-icon"> <!-- Este é o ícone que será clicado -->
-                        <img th:src="@{/img/Menu.png}" alt="Botão de menu" />
+                    <div class="menu-icon"> <img th:src="@{/img/Menu.png}" alt="Botão de menu" />
                     </div>
                 </nav>
             </div>
@@ -185,7 +223,6 @@
 
     <section id="feedback-section" class="feedback-main-section">
         <div class="container">
-            <!-- Carrosséis -->
             <div class="carrossel-geral-container">
                 <div class="org">
                     <div class="um">
@@ -283,11 +320,9 @@
                 </div>
             </div>
 
-            <!-- Seção do Vídeo -->
             <div class="video-section-container">
                 <h3>Conheça nosso espaço</h3>
                 <div class="video-wrapper">
-                    <!-- ATRIBUTO 'autoplay' REMOVIDO -->
                     <video controls muted loop>
                         <source th:src="@{/img/cabelos/video.mp4}" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
@@ -358,7 +393,6 @@
         </footer>
     </section>
 
-    <!-- Scripts JavaScript -->
     <script th:src="@{/js/main.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

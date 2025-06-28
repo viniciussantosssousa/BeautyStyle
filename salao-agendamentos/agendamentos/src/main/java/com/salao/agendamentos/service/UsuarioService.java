@@ -111,9 +111,6 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    // ==============================================================================
-    // ======================= MÉTODO DE EXCLUSÃO CORRIGIDO =========================
-    // ==============================================================================
     @Transactional // Usamos a anotação do Spring para operações de repositório
     public void excluirPorId(Long id) {
         // 1. PRIMEIRO: Deleta os tokens de confirmação que dependem do usuário.

@@ -7,14 +7,14 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #e8f0fe;
-    color: #333; /* Cor de texto padrão um pouco mais escura */
+    color: #333;
 }
 
 /* Background verde */
 .background-verde {
     background-color: #114440;
-    padding-bottom: 30px;
-    color: white; /* Garante que texto dentro desta área seja branco por padrão */
+    /* REMOVIDO o padding-bottom daqui para que a imagem possa tocar a borda */
+    color: white;
 }
 
 /* Header e nav */
@@ -153,22 +153,29 @@ nav {
     text-decoration: none;
 }
 
-/* Main */
+/* ============================================================================== */
+/* ================== AJUSTE PRINCIPAL PARA ALINHAMENTO DA IMAGEM ================= */
+/* ============================================================================== */
+
 main {
     margin-top: 40px;
 }
-.main-content-container { 
+
+.main-content-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px; 
+    /* CHAVE DA CORREÇÃO: Alinha os itens (texto e imagem) na base do container. */
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
 }
 
 .main-text {
     color: white;
-    flex: 1 1 500px; 
-    max-width: 600px;
+    flex: 1;
+    max-width: 55%;
+    /* ADICIONADO: Um padding na base para o texto não ficar colado no chão */
+    padding-bottom: 0; 
 }
 
 .main-text h1 {
@@ -185,17 +192,27 @@ main {
 }
 
 .main-img {
-    flex: 1 1 400px;
-    max-width: 500px; 
+    flex-basis: 40%;
+    max-width: 450px;
+    /* A altura fixa foi REMOVIDA daqui para permitir que a imagem se ajuste naturalmente. */
 }
+
+/* 3. Ajuste final na tag da imagem */
 .main-img img {
-    max-width: 100%;
-    height: auto; 
+    width: 100%;
+    height: auto; /* Altura automática para manter a proporção */
+    /* CHAVE DA CORREÇÃO: Remove espaço extra que pode ser criado abaixo da imagem */
+    display: block;
+    border-radius: 0; /* Garante que não haja cantos arredondados na base */
 }
+
+/* ============================ FIM DO AJUSTE ================================== */
+
 
 /* Secção de Feedback Principal */
 .feedback-main-section {
-    padding: 40px 0; 
+    /* ADICIONADO: Padding-top para compensar o que foi removido do .background-verde */
+    padding: 60px 0; 
     background-color: #f8f9fa; 
 }
 
@@ -434,19 +451,21 @@ main {
 
 /* Responsivo - Menu Overlay */
 @media (max-width: 900px) {
-    .container.main-content-container { 
+    .main-content-container { 
         flex-direction: column; 
         text-align: center; 
+        /* Mantém o alinhamento pela base no mobile também */
+        align-items: center; 
     }
     .main-text, .main-img {
         max-width: 100%;
         margin: 10px 0;
         flex-basis: auto; 
+        height: auto;
     }
     .main-text h1 { font-size: 2.2rem; }
     .main-text h3 { font-size: 1.1rem; margin-bottom: 20px;}
     .main-text div .btn-gradient { margin: 0 auto; } 
-
 
     .ul {
         display: none; 
@@ -483,30 +502,30 @@ main {
     }
 
      .ul li a, .ul .nav-link-perfil { 
-        padding: 12px 25px; 
-        width: auto;
-        font-size: 1.4rem; 
-        color: white;
-        border-radius: 8px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .ul li a:hover, .ul .nav-link-perfil:hover {
+         padding: 12px 25px; 
+         width: auto;
+         font-size: 1.4rem; 
+         color: white;
+         border-radius: 8px;
+         transition: background-color 0.3s ease, color 0.3s ease;
+     }
+     .ul li a:hover, .ul .nav-link-perfil:hover {
          background-color: rgba(254, 150, 17, 0.1); 
          color: #fe9611;
          text-decoration: none;
-    }
-    
-    .ul li a .btn-gradient {
-        padding: 10px 20px; 
-        font-size: 1.2rem; 
-        background: linear-gradient(45deg, #fe9611, #ff5c00); 
-        color: white !important;
-        border: none;
-    }
+     }
+     
+     .ul li a .btn-gradient {
+         padding: 10px 20px; 
+         font-size: 1.2rem; 
+         background: linear-gradient(45deg, #fe9611, #ff5c00); 
+         color: white !important;
+         border: none;
+     }
      .ul li a .btn-gradient:hover {
-        background: linear-gradient(45deg, #e08000, #cc4c00);
-        color: white !important;
-    }
+         background: linear-gradient(45deg, #e08000, #cc4c00);
+         color: white !important;
+     }
 
 
     .ulSepara {
@@ -528,7 +547,7 @@ main {
     }
 
     .section-title { font-size: 1.8rem; }
-    .section-subtitle, .feedback-main-section h2 { font-size: 1.6rem; } /* Ajustado para ser consistente */
+    .section-subtitle, .feedback-main-section h2 { font-size: 1.6rem; }
     .section-subtitle-light { font-size: 1.5rem; }
 
 

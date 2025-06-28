@@ -9,7 +9,7 @@ api/usuarios/cadastro
   "email": "maria@gmail.com",
   "telefone": "11988887777",
   "senha": "123456",
-  "tipo": "CLIENTE"
+  "tipo": "ADMIN"
 }
 
 Criar Serviço: POST
