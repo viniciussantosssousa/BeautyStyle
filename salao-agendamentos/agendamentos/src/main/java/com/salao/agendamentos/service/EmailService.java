@@ -22,7 +22,7 @@ public class EmailService {
             helper.setText(emailBody, true); // true para indicar que é HTML
             helper.setTo(to);
             helper.setSubject(subject);
-            helper.setFrom("seu-email@gmail.com"); // Opcional: mesmo e-mail do properties
+            helper.setFrom("gabriel.henrique.0048@gmail.com");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             // Em um projeto real, logar este erro é crucial

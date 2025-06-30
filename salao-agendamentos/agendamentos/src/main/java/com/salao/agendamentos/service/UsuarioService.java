@@ -50,7 +50,8 @@ public class UsuarioService {
         );
         tokenRepository.save(confirmationToken);
 
-        String link = "https://fantastic-spoon-vxqg659pjxgfp9v9-8080.app.github.dev/api/usuarios/confirm?token=" + tokenValue;
+        // Em UsuarioService.java
+        String link = "https://organic-happiness-vxqg659qg6j2qv5-8080.app.github.dev/api/usuarios/confirm?token=" + tokenValue;
         String emailBody = buildEmail(dto.getNome(), link);
         emailService.send(dto.getEmail(), "Confirme seu cadastro", emailBody);
     }
